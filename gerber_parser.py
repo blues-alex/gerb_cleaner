@@ -23,16 +23,16 @@ ExtPatt = re.compile(REG2)
 
 
 def file_validator(name: str) -> bool:
-    if not os.path.isdir(os.path.join(os.curdir, name)):
+    if not os.path.isdir(os.path.join(curPath, name)):
         if len(ExtPatt.findall(name.split('.')[-1])):
             return True
     return False
 
 
-files = [os.path.join(os.curdir, i)
-         for i in os.listdir(os.curdir) if file_validator(i)]
+files = [os.path.join(curPath, i)
+         for i in os.listdir(curPath) if file_validator(i)]
 
-os.mkdir(os.path.join(os.curdir, "BACK"))
+os.mkdir(os.path.join(curPath, "BACK"))
 for name in files:
     back = os.path.join(os.path.split(name)[0], "BACK", os.path.split(name)[1])
     os.rename(name, back)
