@@ -2,7 +2,9 @@
 
 import os
 import re
+import sys
 
+curPath = sys.argv[1] if len(sys.argv) >= 2 else os.curdir
 # Constant
 TREASH = ["Altium",
           "Designer",
@@ -11,12 +13,12 @@ TREASH = ["Altium",
 REG1 = '(' + '|'.join(i + '|' + i.lower() + '|' + i.upper() for i in TREASH) + ')'
 TreashPatt = re.compile(REG1)
 
-EXTENCIONS = ["BRD",
+EXTENSIONS = ["BRD",
               "DRL",
               "GB*",
               "GT*"]
 
-REG2 = '(' + '|'.join(f'{i.replace("*","[A-Z]")}|{i.replace("*","[A-Z]").lower()}' for i in EXTENCIONS) + ')'
+REG2 = '(' + '|'.join(f'{i.replace("*","[A-Z]")}|{i.replace("*","[A-Z]").lower()}' for i in EXTENSIONS) + ')'
 ExtPatt = re.compile(REG2)
 
 
